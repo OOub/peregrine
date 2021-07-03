@@ -1,8 +1,6 @@
 ![Logo](resources/peregrine.png)
 
-This repository contains code for an implementation of an efficient variational gaussian mixture model on multiple datasets:
-* Data Similarity Gaussian Mixture Model (D-GMM)
-* Stochastic Gaussian Mixture Model (S-GMM)
+This repository contains code which implements the Stochastic Gaussian Mixture Model (S-GMM) for event-based datasets
 
 ## Dependencies
 * [CMake](https://cmake.org)
@@ -10,32 +8,23 @@ This repository contains code for an implementation of an efficient variational 
 * [Blaze](https://bitbucket.org/blaze-lib/blaze/wiki/Configuration%20and%20Installation)
 * [Intel TBB](https://github.com/oneapi-src/oneTBB)
 * [pytorch 1.4+](https://pytorch.org)
+* [Tonic][https://github.com/neuromorphs/tonic.git]
 
 ## Running a classification task
 
-First, generate time surfaces, which we are going to cluster afterwards.
-* time surfaces from the N-MNIST, NCARS and DVSGesture event-based datasets: time_surfaces.ipynb
-* time surfaces from the N-CALTECH101 event-based dataset: N-Caltech101.ipynb
-
-Main entry point is variational-gmm.ipynb, which runs the GMM clustering algorithm and then uses standard scikit-learn or pytorch classifiers to analyse the results.
-
-1. We first need to make sure the C++ source code is compiled (C++14 required) by running
-
+1. Generate time-surfaces using: time_surfaces.ipynb (look at tonic for more details on what datasets are support)
+2. Compile C++14 source code
 ~~~~
 premake4 gmake && cd build && make
 ~~~~
+3. Main entry point for clustering and classification: variational-gmm.ipynb
 
-2. We can then open the python notebook and start classifying datasets. There's no need to run the compilation step again unless you make changes to the C++ source code
+## Installation
 
-#### Dependencies for working with time surfaces
-
-* Tonic (Spike manipulation and augmentation): https://github.com/neuromorphs/tonic.git
-
+#### Tonic
 ~~~
 pip install tonic
 ~~~
-
-## Installation
 
 #### CMake and Premake4
 
