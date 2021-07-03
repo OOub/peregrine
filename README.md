@@ -8,7 +8,7 @@ This repository contains code which implements the Stochastic Gaussian Mixture M
 * [Blaze](https://bitbucket.org/blaze-lib/blaze/wiki/Configuration%20and%20Installation)
 * [Intel TBB](https://github.com/oneapi-src/oneTBB)
 * [pytorch 1.4+](https://pytorch.org)
-* [Tonic][https://github.com/neuromorphs/tonic.git]
+* [Tonic](https://github.com/neuromorphs/tonic.git)
 
 ## Running a classification task
 
