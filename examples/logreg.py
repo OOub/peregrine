@@ -14,7 +14,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 class LogisticRegression(nn.Module):
     def __init__(self, input_dim, output_dim, epochs=70, lr=0.1, step_size=10, gamma=1, momentum=0, weight_decay=0):
         super(LogisticRegression, self).__init__()
-        self.linear = nn.Linear(input_dim, output_dim)
+        self.linear = nn.Linear(input_dim, output_dim).to(device)
         self.epochs = epochs
         self.best_acc = 0
         self.criterion = nn.CrossEntropyLoss()
@@ -65,7 +65,7 @@ class LogisticRegression(nn.Module):
                 total += targets.size(0)
                 correct += (predicted == targets).sum().item()
                 preds = preds + list(predicted)
-        preds = torch.stack(preds).numpy()
+        preds = torch.stack(preds).cpu().numpy()
 
         acc = 100. * correct / total
         if verbose > 0 and acc > self.best_acc:
