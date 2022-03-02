@@ -1,4 +1,4 @@
-// Created by Omar Oubari <omar.oubari@inserm.fr> and Georgios Exarchakis <georgios.exarchakis@ens.fr>
+// Created by Omar Oubari <omar@oubari.me>
 //
 // Information: Contains the Gmm_core base class for all the gmm algorithms and the Gmm class used to build the gmm model
 

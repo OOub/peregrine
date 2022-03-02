@@ -1,3 +1,8 @@
+// Copyright (C) 2018, Florian Hirschberger <florian.hirschberger@uol.de>
+// LICENSE: THE SOFTWARE IS PROVIDED "AS IS" UNDER THE ACADEMIC FREE LICENSE (AFL) v3.0.
+//
+// Modified by Omar Oubari <omar@oubari.me>
+//
 // Information: Contains the Kmeans_core class which implements the kmeans algorithm and the Kmeans class used to build the kmeans model
 // training model 0
 
