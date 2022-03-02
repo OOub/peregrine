@@ -12,11 +12,12 @@ import numpy as np
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 class LogisticRegression(nn.Module):
-    def __init__(self, input_dim, output_dim, epochs=70, lr=0.1, step_size=10, gamma=1, momentum=0, weight_decay=0):
+    def __init__(self, input_dim, output_dim, epochs=70, lr=0.1, step_size=10, gamma=1, momentum=0, weight_decay=0, l1_lambda=0):
         super(LogisticRegression, self).__init__()
         self.linear = nn.Linear(input_dim, output_dim).to(device)
         self.epochs = epochs
         self.best_acc = 0
+        self.l1_lambda = l1_lambda
         self.criterion = nn.CrossEntropyLoss()
         self.optimizer = optim.SGD(self.linear.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay)
         self.scheduler = StepLR(self.optimizer, step_size=step_size, gamma=gamma)
@@ -42,6 +43,11 @@ class LogisticRegression(nn.Module):
 
                 # Calculate Loss
                 loss = self.criterion(outputs, targets.long())
+                if self.l1_lambda != 0:
+                    l1_regularization = 0
+                    for param in self.linear.parameters():
+                        l1_regularization += torch.norm(param, 1)**2
+                    loss += self.l1_lambda * l1_regularization
 
                 # Getting gradients w.r.t. parameters
                 if loss.requires_grad:

@@ -55,6 +55,7 @@ def extract_spatial_features(data, transform, sensor_size, ordering, surface_dim
     data_type = np.float64 if save_as_double else np.float32
     labels_file_name = './' + folder + 'labels/' + str(index) + '.npy'
     np.save(labels_file_name, np.array(np.int32([label.item()])))
+#     np.save(labels_file_name, np.array(np.int32([label])))
     cells_file_name = './' + folder + 'cells/' + str(index) + '.npy'
     np.save(cells_file_name, cells.astype(np.int32))
     file_name = './' + folder + 'data/' + str(index) + '.npy'
@@ -72,6 +73,7 @@ def extract_features(data, transform, sensor_size, ordering, surface_dimensions,
     data_type = np.float64 if save_as_double else np.float32
     labels_file_name = './' + folder + 'labels/' + str(index) + '.npy'
     np.save(labels_file_name, np.array(np.int32([label.item()])))
+#     np.save(labels_file_name, np.array(np.int32([label])))
     file_name = './' + folder + 'data/' + str(index) + '.npy'
     np.save(file_name, surfs.astype(data_type))
     return surfs.shape

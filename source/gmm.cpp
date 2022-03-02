@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
     int sample_percentage           = std::atoi(argv[4]);  // take a data sample for the training set instead of full data (between 1 and 100)
 
     // model parameters
-    int training_model              = std::atoi(argv[5]);  // 1:u-S-GMM | 2:S-GMM
+    int training_model              = std::atoi(argv[5]);  // 1:S-GMM | 2:S-GMM-Prior | 3:D-GMM | 4: D-GMM-Tied
     int M                           = std::atoi(argv[6]);  // number of cluster centers
     int H                           = std::atoi(argv[7]);  // number of clusters considered for each data point
     int R                           = std::atoi(argv[8]);  // number of new samples
